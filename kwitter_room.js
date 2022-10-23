@@ -1,4 +1,4 @@
-const firebaseConfig = {
+var firebaseConfig = {
       apiKey: "AIzaSyD2W7_SWyQupPiQ6ocim0C1__kuvs3sYb0",
       authDomain: "kwitter-73d9e.firebaseapp.com",
       databaseURL: "https://kwitter-73d9e-default-rtdb.firebaseio.com",
@@ -10,14 +10,13 @@ const firebaseConfig = {
     };
     
     // Initialize Firebase
-    const app = initializeApp(firebaseConfig);
-    const analytics = getAnalytics(app);
-
+    firebase.initializeApp(firebaseConfig);
+    user=localStorage.getItem("user_name");
+    document.getElementById("user_name").innerHTML =  "Welcome " + user + "!";
+    
 
 function getData() {firebase.database().ref("/").on('value', function(snapshot) {document.getElementById("output").innerHTML = "";snapshot.forEach(function(childSnapshot) {childKey  = childSnapshot.key;
        Room_names = childKey;
-      //Start code
-
-      //End code
+   
       });});}
 getData();
